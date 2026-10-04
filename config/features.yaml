@@ -1,0 +1,196 @@
+# Analytical feature registry. [PROPOSED] weights/value functions — lock at Gate 2.
+# valuefn:
+#   linear:     {best: x where v=1, worst: x where v=0}  (piecewise-linear, clipped; direction implied)
+#   percentile: {direction: +1|-1, log: bool}             (ref population = eligible cells)
+#   winsor:     {direction: +1|-1, lo_pct: 2, hi_pct: 98, log: bool}
+# missing_rule: renorm (within-pillar renormalisation subject to min_pillar_weight_observed)
+features:
+  # ---------------- Energy & Carbon ----------------
+  ec_co2_rate:
+    pillar: EC
+    unit: kg CO2e/MWh
+    source: egrid (subregion SRC2ERTA, lb->kg)
+    res_src: egrid_subregion
+    valuefn: {type: linear, best: 100, worst: 700}
+    weight: 0.5
+  ec_clean_share:
+    pillar: EC
+    unit: fraction of generation (nuclear + renewables incl. hydro)
+    source: egrid (subregion generation mix)
+    res_src: egrid_subregion
+    valuefn: {type: linear, best: 0.9, worst: 0.1}
+    weight: 0.3
+  ec_pue:
+    pillar: EC
+    unit: PUE (derived, ASSUMPTION model on observed CDD65)
+    source: noaa_normals + scenario.yaml
+    res_src: station IDW
+    valuefn: {type: linear, best: 1.08, worst: 1.17}
+    weight: 0.2
+  # ---------------- Water ----------------
+  wa_bws:
+    pillar: WA
+    unit: baseline water stress ratio (withdrawal / available)
+    source: aqueduct (bws_raw, HydroBASINS L6)
+    res_src: catchment
+    valuefn: {type: linear, best: 0.1, worst: 0.8}
+    weight: 0.35
+  wa_bws_2050:
+    pillar: WA
+    unit: projected water stress ratio 2050 business-as-usual (SSP3-7.0)
+    source: aqueduct future (bau50_ws_x_r)
+    res_src: catchment
+    valuefn: {type: linear, best: 0.1, worst: 0.8}
+    weight: 0.2
+  wa_grid_water:
+    pillar: WA
+    unit: L/MWh consumed by generation (eGRID mix x Macknick 2012 factors)
+    source: egrid + scenario.yaml
+    res_src: egrid_subregion
+    valuefn: {type: linear, best: 200, worst: 2500}
+    weight: 0.3
+  wa_onsite_wue:
+    pillar: WA
+    unit: L/kWh IT (derived, ASSUMPTION model on observed CDD65)
+    source: noaa_normals + scenario.yaml
+    res_src: station IDW
+    valuefn: {type: linear, best: 0.05, worst: 0.30}
+    weight: 0.15
+  # ---------------- Grid & Infrastructure ----------------
+  gi_dist_tx230_km:
+    pillar: GI
+    unit: km to nearest in-service >=230 kV line (cell centroid, EPSG:5070)
+    source: hifld_transmission
+    res_src: line vector
+    valuefn: {type: linear, best: 5, worst: 50}
+    weight: 0.5
+  gi_dist_tx345_km:
+    pillar: GI
+    unit: km to nearest >=345 kV line
+    source: hifld_transmission
+    res_src: line vector
+    valuefn: {type: linear, best: 10, worst: 100}
+    weight: 0.25
+  gi_tx_km_30km:
+    pillar: GI
+    unit: km of >=230 kV line within 30 km (capacity / redundancy proxy)
+    source: hifld_transmission
+    res_src: line vector
+    valuefn: {type: winsor, direction: 1, lo_pct: 2, hi_pct: 98, log: true}
+    weight: 0.25
+  # ---------------- Community & Economic ----------------
+  ce_workforce_80km:
+    pillar: CE
+    unit: persons aged 18-64 within 80 km (tract centroids)
+    source: acs_b01001 + census_tract_gazetteer
+    res_src: tract
+    valuefn: {type: winsor, direction: 1, lo_pct: 2, hi_pct: 98, log: true}
+    weight: 0.35
+  ce_skilled_share_80km:
+    pillar: CE
+    unit: share of employed in construction/maintenance/production + computer/engineering occupations within 80 km
+    source: acs_c24010
+    res_src: tract
+    valuefn: {type: winsor, direction: 1, lo_pct: 2, hi_pct: 98, log: false}
+    weight: 0.2
+  ce_unemployment_50km:
+    pillar: CE
+    unit: unemployment rate within 50 km (higher = more local-employment benefit)
+    source: acs_b23025
+    res_src: tract
+    valuefn: {type: winsor, direction: 1, lo_pct: 2, hi_pct: 98, log: false}
+    weight: 0.15
+  ce_income_50km:
+    pillar: CE
+    unit: population-weighted median household income within 50 km (lower = greater development need)
+    source: acs_b19013
+    res_src: tract
+    valuefn: {type: winsor, direction: -1, lo_pct: 2, hi_pct: 98, log: false}
+    weight: 0.1
+  ce_popdens_5km:
+    pillar: CE
+    unit: persons/km2 within 5 km (residential burden - noise, land conflict)
+    source: acs_b01001
+    res_src: tract
+    valuefn: {type: linear, best: 50, worst: 1000}
+    weight: 0.2
+  # ---------------- Climate Resilience ----------------
+  cr_flood_freq:
+    pillar: CR
+    unit: NRI annualized frequency, inland + coastal flooding (events/yr)
+    source: fema_nri_tracts (IFLD_AFREQ + CFLD_AFREQ)
+    res_src: tract
+    valuefn: {type: percentile, direction: -1}
+    weight: 0.25
+  cr_wildfire_freq:
+    pillar: CR
+    unit: NRI wildfire annualized frequency (burn probability)
+    source: fema_nri_tracts (WFIR_AFREQ)
+    res_src: tract
+    valuefn: {type: percentile, direction: -1}
+    weight: 0.2
+  cr_hurricane_freq:
+    pillar: CR
+    unit: NRI hurricane annualized frequency
+    source: fema_nri_tracts (HRCN_AFREQ)
+    res_src: tract
+    valuefn: {type: percentile, direction: -1}
+    weight: 0.2
+  cr_heatwave_freq:
+    pillar: CR
+    unit: NRI heat-wave annualized frequency (event-days/yr)
+    source: fema_nri_tracts (HWAV_AFREQ)
+    res_src: tract
+    valuefn: {type: percentile, direction: -1}
+    weight: 0.15
+  cr_drought_freq:
+    pillar: CR
+    unit: NRI drought annualized frequency
+    source: fema_nri_tracts (DRGT_AFREQ)
+    res_src: tract
+    valuefn: {type: percentile, direction: -1}
+    weight: 0.1
+  cr_tornado_freq:
+    pillar: CR
+    unit: NRI tornado annualized frequency
+    source: fema_nri_tracts (TRND_AFREQ)
+    res_src: tract
+    valuefn: {type: percentile, direction: -1}
+    weight: 0.1
+  # ---------------- Land & Materials ----------------
+  lm_suitable_km2:
+    pillar: LM
+    unit: km2 of NLCD-suitable land not in PAD-US GAP 1-2 within cell
+    source: nlcd + padus
+    res_src: 30 m raster (240 m decimated read)
+    valuefn: {type: linear, best: 15, worst: 2}
+    weight: 0.55
+  lm_protected_frac:
+    pillar: LM
+    unit: fraction of cell in PAD-US GAP status 1-2 (proximity to sensitive ecosystems)
+    source: padus
+    res_src: polygon
+    valuefn: {type: linear, best: 0.0, worst: 0.8}
+    weight: 0.25
+  lm_wet_frac:
+    pillar: LM
+    unit: fraction of cell open water + woody/emergent wetlands (NLCD 11, 90, 95)
+    source: nlcd
+    res_src: 30 m raster
+    valuefn: {type: linear, best: 0.0, worst: 0.5}
+    weight: 0.2
+  # ---------------- Heat Recovery & Reuse ----------------
+  hr_heat_demand:
+    pillar: HR
+    unit: HDD65 x population within 50 km (person-degF-days)
+    source: noaa_normals + acs_b01001
+    res_src: station IDW x tract
+    valuefn: {type: winsor, direction: 1, lo_pct: 2, hi_pct: 98, log: true}
+    weight: 0.7
+  hr_hdd:
+    pillar: HR
+    unit: annual HDD65 (degF-days) — heating-season length
+    source: noaa_normals
+    res_src: station IDW
+    valuefn: {type: linear, best: 7000, worst: 1000}
+    weight: 0.3

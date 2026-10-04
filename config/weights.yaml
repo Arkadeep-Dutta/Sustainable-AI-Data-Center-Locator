@@ -1,0 +1,20 @@
+# Pillar weights (sum 100) — [PROPOSED] default from original spec; lock at Gate 2.
+pillars:
+  EC: 22   # Energy & Carbon
+  WA: 16   # Water
+  GI: 16   # Grid & Infrastructure
+  CE: 15   # Community & Economic
+  CR: 14   # Climate Resilience
+  LM: 10   # Land & Materials
+  HR: 7    # Heat Recovery & Reuse
+pillar_names:
+  EC: Energy & Carbon
+  WA: Water
+  GI: Grid & Infrastructure
+  CE: Community & Economic
+  CR: Climate Resilience
+  LM: Land & Materials
+  HR: Heat Recovery & Reuse
+epsilon: 0.01                 # floor for geometric mean
+min_pillar_weight_observed: 0.5   # renormalize within pillar only if >= this share observed
+confidence_threshold: 0.75

@@ -1,0 +1,27 @@
+# Hard gates [PROPOSED] — lock at Gate 2. National = region-level feasibility, not parcel claims.
+national:
+  G1_land:
+    feature: lm_suitable_km2
+    rule: lt
+    threshold: {5: 15.0, 6: 2.0}       # by H3 resolution
+    rationale: a 300 MW-1 GW campus needs ~0.5-2 km2 buildable, unprotected land
+  G2_protected_water:
+    feature: lm_unbuildable_frac       # PAD-US GAP1-2 + open water + wetlands share
+    rule: gt
+    threshold: 0.8
+    rationale: almost no feasible footprint
+  G4_transmission:
+    feature: gi_dist_tx230_km
+    rule: gt
+    threshold: 50.0
+    rationale: "over 50 km of new HV line -> prohibitive cost / multi-year permitting"
+  G5_water:
+    feature: wa_bws
+    rule: gt
+    threshold: 0.8
+    only_if_scenario: water_cooled_scenario
+    rationale: Aqueduct 'extremely high' stress; only binding for water-dependent cooling
+local:   # res 7 (site-scale)
+  G1_land: {feature: lm_suitable_km2, rule: lt, threshold: {7: 0.5}}
+  G3_flood: {feature: cr_sfha_frac, rule: gt, threshold: 0.5}
+  G4_transmission: {feature: gi_dist_tx230_km, rule: gt, threshold: 15.0}

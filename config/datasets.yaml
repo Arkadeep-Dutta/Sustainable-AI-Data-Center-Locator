@@ -1,0 +1,126 @@
+# Dataset registry (provenance). `file` is relative to data/raw/. verified=true → never redownload.
+# kind: http (direct file) | arcgis (FeatureServer paged query → GeoParquet)
+datasets:
+  census_states:
+    title: Census cartographic boundary states 1:500k
+    publisher: U.S. Census Bureau
+    vintage: "2023"
+    license: Public domain (US Gov)
+    url: https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_state_500k.zip
+    file: cb_2023_us_state_500k.zip
+    kind: http
+  census_counties:
+    title: Census cartographic boundary counties 1:500k
+    publisher: U.S. Census Bureau
+    vintage: "2023"
+    license: Public domain (US Gov)
+    url: https://www2.census.gov/geo/tiger/GENZ2023/shp/cb_2023_us_county_500k.zip
+    file: cb_2023_us_county_500k.zip
+    kind: http
+  census_tract_gazetteer:
+    title: Census Gazetteer — census tracts (centroids, land area)
+    publisher: U.S. Census Bureau
+    vintage: "2023"
+    license: Public domain (US Gov)
+    url: https://www2.census.gov/geo/docs/maps-data/data/gazetteer/2023_Gazetteer/2023_Gaz_tracts_national.zip
+    file: 2023_Gaz_tracts_national.zip
+    kind: http
+  acs_b01001:
+    title: ACS 5-yr 2019-2023 B01001 Sex by Age (table-based summary file, all geos)
+    publisher: U.S. Census Bureau
+    vintage: 2019-2023
+    license: Public domain (US Gov)
+    url: https://www2.census.gov/programs-surveys/acs/summary_file/2023/table-based-SF/data/5YRData/acsdt5y2023-b01001.dat
+    file: acsdt5y2023-b01001.dat
+    kind: http
+  acs_b23025:
+    title: ACS 5-yr 2019-2023 B23025 Employment Status
+    publisher: U.S. Census Bureau
+    vintage: 2019-2023
+    license: Public domain (US Gov)
+    url: https://www2.census.gov/programs-surveys/acs/summary_file/2023/table-based-SF/data/5YRData/acsdt5y2023-b23025.dat
+    file: acsdt5y2023-b23025.dat
+    kind: http
+  acs_b19013:
+    title: ACS 5-yr 2019-2023 B19013 Median Household Income
+    publisher: U.S. Census Bureau
+    vintage: 2019-2023
+    license: Public domain (US Gov)
+    url: https://www2.census.gov/programs-surveys/acs/summary_file/2023/table-based-SF/data/5YRData/acsdt5y2023-b19013.dat
+    file: acsdt5y2023-b19013.dat
+    kind: http
+  acs_c24010:
+    title: ACS 5-yr 2019-2023 C24010 Sex by Occupation (civilian employed 16+)
+    publisher: U.S. Census Bureau
+    vintage: 2019-2023
+    license: Public domain (US Gov)
+    url: https://www2.census.gov/programs-surveys/acs/summary_file/2023/table-based-SF/data/5YRData/acsdt5y2023-c24010.dat
+    file: acsdt5y2023-c24010.dat
+    kind: http
+  egrid:
+    title: EPA eGRID2023 data (rev2)
+    publisher: U.S. EPA
+    vintage: "2023 (released 2025)"
+    license: Public domain (US Gov)
+    url: https://www.epa.gov/system/files/documents/2025-06/egrid2023_data_rev2.xlsx
+    file: egrid2023_data_rev2.xlsx
+    kind: http
+  egrid_geo:
+    title: EPA eGRID2023 subregion geodatabase (v2)
+    publisher: U.S. EPA
+    vintage: "2023"
+    license: Public domain (US Gov); boundaries approximate per EPA
+    url: https://www.epa.gov/system/files/other-files/2025-06/egrid2023_v2_geodatabase.gdb_.zip
+    file: egrid2023_v2_geodatabase.gdb.zip
+    kind: http
+  aqueduct:
+    title: WRI Aqueduct 4.0 water risk data (baseline + future)
+    publisher: World Resources Institute
+    vintage: "4.0 (2023)"
+    license: CC BY 4.0
+    url: https://files.wri.org/aqueduct/aqueduct-4-0-water-risk-data.zip
+    file: aqueduct-4-0-water-risk-data.zip
+    kind: http
+  noaa_normals:
+    title: NOAA U.S. Climate Normals 1991-2020 annual/seasonal by station
+    publisher: NOAA NCEI
+    vintage: 1991-2020
+    license: Public domain (US Gov)
+    url: https://www.ncei.noaa.gov/data/normals-annualseasonal/1991-2020/archive/us-climate-normals_1991-2020_v1.0.1_annualseasonal_multivariate_by-station_c20230404.tar.gz
+    file: noaa_normals_annualseasonal_1991_2020.tar.gz
+    kind: http
+  nlcd:
+    title: Annual NLCD Collection 1 v1 Land Cover 2023, CONUS 30 m
+    publisher: USGS / MRLC
+    vintage: "2023"
+    license: Public domain (US Gov)
+    url: https://www.mrlc.gov/downloads/sciweb1/shared/mrlc/data-bundles/Annual_NLCD_LndCov_2023_CU_C1V1.zip
+    file: Annual_NLCD_LndCov_2023_CU_C1V1.zip
+    kind: http
+  padus:
+    title: PAD-US 4.1 combined (GeoParquet mirror by C. Boettiger, source.coop)
+    publisher: USGS GAP (mirror source.coop/cboettig/padus)
+    vintage: "4.1 (2024)"
+    license: Public domain (US Gov)
+    url: https://s3-west.nrp-nautilus.io/public-padus/padus-4-1/combined.parquet
+    file: padus41_combined.parquet
+    kind: http
+  hifld_transmission:
+    title: HIFLD Electric Power Transmission Lines
+    publisher: DHS HIFLD (ArcGIS Online service, services1.arcgis.com/Hp6G80Pky0om7QvQ)
+    vintage: service snapshot (SOURCEDATE per feature)
+    license: Public (HIFLD Open)
+    url: https://services1.arcgis.com/Hp6G80Pky0om7QvQ/arcgis/rest/services/Electric_Power_Transmission_Lines/FeatureServer/0
+    file: hifld_transmission.parquet
+    kind: arcgis
+    out_fields: ID,TYPE,STATUS,OWNER,VOLTAGE,VOLT_CLASS,INFERRED,SUB_1,SUB_2,SOURCEDATE
+  fema_nri_tracts:
+    title: FEMA National Risk Index — census tracts (table, no geometry)
+    publisher: FEMA
+    vintage: service snapshot (NRI v1.19/1.20, Dec 2023+)
+    license: Public domain (US Gov)
+    url: https://services.arcgis.com/XG15cJAlne2vxtgt/ArcGIS/rest/services/National_Risk_Index_Census_Tracts/FeatureServer/0
+    file: fema_nri_tracts.parquet
+    kind: arcgis
+    no_geometry: true
+    out_fields: TRACTFIPS,STCOFIPS,POPULATION,AREA,RISK_SCORE,SOVI_SCORE,RESL_SCORE,IFLD_AFREQ,IFLD_EALS,IFLD_HLRB,CFLD_AFREQ,CFLD_EALS,WFIR_AFREQ,WFIR_EALS,WFIR_HLRB,HRCN_AFREQ,HRCN_EALS,HRCN_HLRB,HWAV_AFREQ,HWAV_EALS,DRGT_AFREQ,DRGT_EALS,TRND_AFREQ,TRND_EALS,ERQK_AFREQ,ERQK_EALS,SWND_AFREQ,HAIL_AFREQ

@@ -1,0 +1,35 @@
+# Data-center physical ASSUMPTIONS (not observations). [PROPOSED] — lock at Gate 2.
+facility:
+  it_mw: 300                 # base case IT capacity
+  it_mw_sensitivity: [100, 1000]
+  load_factor: 0.80          # average IT utilisation
+cooling:
+  type: direct_to_chip_liquid + dry_coolers_with_adiabatic_assist
+  pue_base: 1.08             # PUE at CDD65 = 0
+  pue_per_cdd: 2.0e-5        # PUE increase per CDD65 (degF-day) -> ~1.08-1.17 CONUS
+  wue_base_l_per_kwh: 0.02   # on-site L per kWh IT at CDD65 = 0
+  wue_per_cdd: 6.0e-5        # L/kWh per CDD65
+  water_cooled_scenario: false   # true activates gate G5 (extreme water stress)
+energy:
+  cfe_shares: [0.6, 0.9]     # 24/7 carbon-free procurement scenarios
+  emission_rate_basis: egrid_subregion_output_co2e   # location-based average; marginal = sensitivity
+# Grid water consumption factors, gal/MWh (Macknick et al. 2012, ERL 7:045802, medians,
+# cooling-tower / generic where applicable). LITERATURE FACTORS, not site observations.
+grid_water_gal_per_mwh:
+  coal: 687
+  gas: 198
+  oil: 826
+  nuclear: 672
+  biomass: 553
+  geothermal: 10
+  hydro: 4491        # reservoir evaporation (allocation contested) -> see include_hydro
+  solar: 1
+  wind: 0
+  other: 0
+  other_fossil: 687
+include_hydro_water: true    # sensitivity: false
+heat_reuse:
+  recoverable_fraction: [0.6, 0.8]   # share of IT heat captured by DLC loop at 45-60 C
+  displaced_ef_tco2_per_mwh_th: 0.20 # natural-gas boiler, ~90% efficiency
+  demand_radius_km: 50
+scarcity_cf_clip: [0.1, 10.0]        # AWARE-inspired CF = BWS / CONUS median BWS
