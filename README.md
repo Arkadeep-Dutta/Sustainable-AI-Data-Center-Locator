@@ -48,6 +48,20 @@ streamlit run app/streamlit_app.py            # demo
 pytest -q
 ```
 
+## 5-minute demo script
+```powershell
+python -m venv .venv; .\.venv\Scripts\pip install -r requirements.txt
+python -m pytest                                   # one-command smoke test
+.\.venv\Scripts\streamlit run app\streamlit_app.py  # opens on "Final recommendation"
+```
+1. **Final recommendation** view (default): Wyoming Co, NY recommended, with King Co, WA shown as model #1.
+   Then the top-5 table, robustness chart, sustainability comparison, and map.
+2. Sidebar → **Explore & re-weight**: drag *Grid & Infrastructure* to 35 to re-rank live; tick
+   *Water-cooled design* to activate the water gate.
+
+Full click path, narration and fallback screenshots: `DEMO.md`. Slides: `docs/presentation_5min.md`.
+Screenshots: `screenshots/`.
+
 ## Add a dataset
 1. Register it in `config/datasets.yaml` (url, vintage, license, file).
 2. Write `siteselect/adapters/<name>.py` with `build(cells) -> DataFrame` (index aligned to `cells`),

@@ -1,0 +1,12 @@
+# 5-Minute Presentation (6 slides)
+
+| # | Slide | Key message (say this) | Visual |
+|---|---|---|---|
+| 1 | **Problem** (0:00–0:40) | AI demand is surging. Siting decides decades of carbon, water, and grid impact. Don't just pick a site; build an engine that picks one transparently. | Title + `screenshots/07_fallback_static_national_map.png` |
+| 2 | **Decision engine** (0:40–1:25) | Open, reproducible pipeline: 15 open datasets → H3 hexagons (209,488 across CONUS) → hard gates → 7-pillar scoring → 25 diverse regions → 8 refined at site scale → robustness → manual review of the top finalists. Live re-weighting demo. | Pipeline diagram (docs/02 §1) + `screenshots/06_explore_grid_weight_35.png` |
+| 3 | **Data + scoring framework** (1:25–2:10) | Pillar weights: Energy & Carbon 22, Grid 22, Climate 16, Water 15, Community 11, Land 8, Heat reuse 6. Physical thresholds, not just percentiles. Geometric mean penalises a weak pillar. Gates remove 20 % of CONUS, mostly > 50 km from high-voltage lines. | Weight table + `outputs/maps/exclusions.png` |
+| 4 | **Final rankings** (2:10–2:55) | Top 5: King Co WA (0.861), **Wyoming Co NY (0.846)**, Lewis Co NY (0.845), Yamhill Co OR (0.839), Morgan Co UT (0.819). Under 5,000 weight draws King is #1 in 86 %; Wyoming is top-5 in 99.9 %. | `screenshots/02_map_and_top5.png` + `outputs/maps/fig_robustness_ranks.png` |
+| 5 | **Why Wyoming despite King as model #1** (2:55–3:55) | By design, the model shortlists and the team decides. **King Co site:** RA-10 rural land under Washington's Growth Management Act limits; adjacent Pierce Co banned data centers > 10 MW (Aug 2026). **Wyoming Co:** NY's EO 62 pause on state permits ≥ 50 MW is time-limited. **Context (already scored):** grid 110 vs 288 kg CO₂/MWh. Trade-off stated openly: on pure model terms, Wyoming wins only if carbon weight is ≥ 29 %. | `screenshots/01_final_recommendation.png` + `outputs/maps/fig_pillars_compare.png` |
+| 6 | **Impact, risks, implementation** (3:55–5:00) | vs Loudoun at 300 MW: −60 % operating CO₂ (≈ −375 kt/yr), −68 % scarcity-weighted water, 1.3–1.7 TWh/yr recoverable heat. Top risks: NY permit pause (to ~mid-2027), interconnection, community acceptance. 30-yr plan: dry-cooled DLC, 24/7 carbon-free power, heat network (greenhouses, dairy, district heat), OCP circular hardware. | `screenshots/04_sustainability.png` + `outputs/maps/fig_impact.png` |
+
+Backup: `docs/CRITIQUE.md` (limitations), `docs/05_risk_assessment.md` (risk matrix), `DEMO.md` (click path).
