@@ -1,12 +1,12 @@
-# Pillar weights (sum 100) — [PROPOSED] default from original spec; lock at Gate 2.
+# Pillar weights (sum 100) — [LOCKED Gate 2, 2026-10-04] (team-revised from original 22/16/16/15/14/10/7).
 pillars:
   EC: 22   # Energy & Carbon
-  WA: 16   # Water
-  GI: 16   # Grid & Infrastructure
-  CE: 15   # Community & Economic
-  CR: 14   # Climate Resilience
-  LM: 10   # Land & Materials
-  HR: 7    # Heat Recovery & Reuse
+  WA: 15   # Water
+  GI: 22   # Grid & Infrastructure
+  CE: 11   # Community & Economic
+  CR: 16   # Climate Resilience
+  LM: 8    # Land & Materials
+  HR: 6    # Heat Recovery & Reuse
 pillar_names:
   EC: Energy & Carbon
   WA: Water

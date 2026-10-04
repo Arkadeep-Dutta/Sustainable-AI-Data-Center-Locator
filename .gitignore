@@ -7,3 +7,4 @@ data/interim/
 .env
 .pytest_cache/
 outputs/diagnostics/*.log
+data/processed/*.parquet

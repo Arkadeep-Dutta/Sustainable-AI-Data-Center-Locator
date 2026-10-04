@@ -27,7 +27,7 @@ grid_water_gal_per_mwh:
   wind: 0
   other: 0
   other_fossil: 687
-include_hydro_water: true    # sensitivity: false
+include_hydro_water: false   # [LOCKED Gate 2] baseline excludes contested reservoir evaporation; sensitivity: true
 heat_reuse:
   recoverable_fraction: [0.6, 0.8]   # share of IT heat captured by DLC loop at 45-60 C
   displaced_ef_tco2_per_mwh_th: 0.20 # natural-gas boiler, ~90% efficiency

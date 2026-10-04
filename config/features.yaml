@@ -1,4 +1,4 @@
-# Analytical feature registry. [PROPOSED] weights/value functions — lock at Gate 2.
+﻿# Analytical feature registry. [LOCKED Gate 2, 2026-10-04] WUE dropped (r=1.0 with PUE); its weight moved to PUE.
 # valuefn:
 #   linear:     {best: x where v=1, worst: x where v=0}  (piecewise-linear, clipped; direction implied)
 #   percentile: {direction: +1|-1, log: bool}             (ref population = eligible cells)
@@ -12,21 +12,21 @@ features:
     source: egrid (subregion SRC2ERTA, lb->kg)
     res_src: egrid_subregion
     valuefn: {type: linear, best: 100, worst: 700}
-    weight: 0.5
+    weight: 0.45
   ec_clean_share:
     pillar: EC
     unit: fraction of generation (nuclear + renewables incl. hydro)
     source: egrid (subregion generation mix)
     res_src: egrid_subregion
     valuefn: {type: linear, best: 0.9, worst: 0.1}
-    weight: 0.3
+    weight: 0.25
   ec_pue:
     pillar: EC
     unit: PUE (derived, ASSUMPTION model on observed CDD65)
     source: noaa_normals + scenario.yaml
     res_src: station IDW
     valuefn: {type: linear, best: 1.08, worst: 1.17}
-    weight: 0.2
+    weight: 0.30
   # ---------------- Water ----------------
   wa_bws:
     pillar: WA
@@ -34,28 +34,21 @@ features:
     source: aqueduct (bws_raw, HydroBASINS L6)
     res_src: catchment
     valuefn: {type: linear, best: 0.1, worst: 0.8}
-    weight: 0.35
+    weight: 0.40
   wa_bws_2050:
     pillar: WA
     unit: projected water stress ratio 2050 business-as-usual (SSP3-7.0)
     source: aqueduct future (bau50_ws_x_r)
     res_src: catchment
     valuefn: {type: linear, best: 0.1, worst: 0.8}
-    weight: 0.2
+    weight: 0.25
   wa_grid_water:
     pillar: WA
     unit: L/MWh consumed by generation (eGRID mix x Macknick 2012 factors)
     source: egrid + scenario.yaml
     res_src: egrid_subregion
     valuefn: {type: linear, best: 200, worst: 2500}
-    weight: 0.3
-  wa_onsite_wue:
-    pillar: WA
-    unit: L/kWh IT (derived, ASSUMPTION model on observed CDD65)
-    source: noaa_normals + scenario.yaml
-    res_src: station IDW
-    valuefn: {type: linear, best: 0.05, worst: 0.30}
-    weight: 0.15
+    weight: 0.35
   # ---------------- Grid & Infrastructure ----------------
   gi_dist_tx230_km:
     pillar: GI
@@ -189,7 +182,7 @@ features:
     weight: 0.7
   hr_hdd:
     pillar: HR
-    unit: annual HDD65 (degF-days) — heating-season length
+    unit: annual HDD65 (degF-days) - heating-season length
     source: noaa_normals
     res_src: station IDW
     valuefn: {type: linear, best: 7000, worst: 1000}

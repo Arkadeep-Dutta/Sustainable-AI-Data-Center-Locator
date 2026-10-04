@@ -238,6 +238,16 @@ S_G variance explained by eGRID subregion (ANOVA R²) — report; discuss in CRI
   (P(rank #1), median rank, method sensitivity) / DELIVERABLE STATUS (12 items) /
   MAJOR LIMITATIONS / DEMO COMMAND / FINAL COMMIT / CODEX: NONE|TARGETED|STRONGLY.
 
+## 16b. GATE 2 LOCK (2026-10-04) — supersedes [PROPOSED] values above
+- Resolution: H3 res 6 national (full build ≈ 8.5 min), res 7 refinement.
+- Pillar weights: EC 22, GI 22, CR 16, WA 15, CE 11, LM 8, HR 6.
+- WUE removed from scoring (r = 1.0 with PUE; both CDD-derived); PUE weight in EC raised to 0.30
+  (EC: CO2 0.45, clean 0.25, PUE 0.30). WA: BWS 0.40, BWS-2050 0.25, grid water 0.35.
+  WUE still computed for the impact assessment (docs/04).
+- Grid water: hydro reservoir evaporation EXCLUDED in baseline; inclusion = sensitivity.
+- Gates G1, G2, G4 as §6 (G5 only in water-cooled scenario); value functions per features.yaml.
+- Robustness per §12 unchanged. Authoritative numbers live in config/*.yaml.
+
 ## 17. Discrepancy log
 - 2026-10-04: original long instruction document not located; spec built from the
   instruction prompt. HIFLD Open Data portal was retired in 2025 — transmission /

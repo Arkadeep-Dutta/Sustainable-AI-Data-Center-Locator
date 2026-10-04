@@ -20,7 +20,7 @@ CRS_M = 5070
 
 @lru_cache
 def load(name: str) -> dict:
-    with open(CFG / f"{name}.yaml") as f:
+    with open(CFG / f"{name}.yaml", encoding="utf-8-sig") as f:
         return yaml.safe_load(f)
 
 
