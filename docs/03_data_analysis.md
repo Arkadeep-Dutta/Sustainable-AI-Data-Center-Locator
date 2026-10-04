@@ -41,9 +41,9 @@ no polygons for Whitman Co WA (R9, likely not digitised), which is recorded as m
 | Clean share | 0.25 | 0.42 | 0.58 | 0.9 → 0.1 |
 | Water stress (ratio) | 0.004 | 0.28 | 5.3 | 0.1 → 0.8 |
 | Grid water, hydro excl. (L/MWh) | 727 | 1,120 | 1,809 | 200 → 2,500 |
-| Distance ≥ 230 kV (km) | 0.8 | 11.8 | 42 | 5 → 50 |
-| Suitable land per res-6 cell (km²) | 4.7 | 26.9 | 40.9 | 2 → 15 |
-| HDD65 | 1,530 | 5,340 | 8,740 | 1,000 → 7,000 |
+| Distance ≥ 230 kV (km) | 0.8 | 11.9 | 42 | 5 → 50 |
+| Suitable land per res-6 cell (km²) | 4.8 | 26.8 | 40.9 | 2 → 15 |
+| HDD65 | 1,530 | 5,330 | 8,740 | 1,000 → 7,000 |
 
 Breakpoints were checked against these distributions at Gate 2. Physical thresholds do not saturate the
 discriminating range of the carbon, water, or transmission features. Land saturates (most cells have

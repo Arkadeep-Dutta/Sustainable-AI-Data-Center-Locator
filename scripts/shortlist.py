@@ -1,9 +1,13 @@
-"""Gate-3 shortlist table -> outputs/diagnostics/shortlist_res6.csv"""
+"""Gate-3 shortlist table -> outputs/diagnostics/shortlist_res6.csv
+Region set (region_id, h3, pool size) is the Gate-3-locked list; all score columns are refreshed from the
+CURRENT scores_res6.parquet so the table never carries pre-audit values."""
 import geopandas as gpd
 import pandas as pd
 from siteselect.config import PROCESSED, RAW, DIAG, PILLARS
 
-c = pd.read_parquet(PROCESSED / "candidates_res6.parquet")
+c = pd.read_parquet(PROCESSED / "candidates_res6.parquet")[["h3", "lat", "lon", "region_id", "pool_cells_in_region"]]
+s = pd.read_parquet(PROCESSED / "scores_res6.parquet")
+c = c.join(s[["S_G", "S_A", "rank_G", "rank_A"] + [f"P_{p}" for p in PILLARS]], on="h3")
 pct = pd.read_parquet(PROCESSED / "scores_res6_percentile.parquet")
 f = pd.read_parquet(PROCESSED / "features_res6.parquet")
 co = gpd.read_file(f"zip://{RAW / 'cb_2023_us_county_500k.zip'}")[["NAME", "STUSPS", "geometry"]].to_crs(4326)

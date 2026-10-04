@@ -24,7 +24,7 @@ Strykersville and 35 km southeast of Buffalo.**
 | Land & Materials | 0.98 | 3.7 km² of NLCD-suitable land (crop/pasture, slope ≤ 10 %) in the cell. No PAD-US protected land. Median slope 3.8 % |
 | Heat Reuse | 0.97 | 7,200 heating degree-days (°F) and Buffalo metro heat demand within 50 km. Strong district-heating, greenhouse and agricultural reuse case |
 
-The region has depth: 170 res-7 cells in the 50 km refinement area score within 0.02 of the site.
+The region has depth: 168 res-7 cells in the 50 km refinement area score within 0.02 of the site.
 That leaves room to choose among parcels during land acquisition.
 
 ## How the recommendation was reached (transparency)

@@ -15,7 +15,7 @@ current events (docs/01, docs/05):
 Caveats a reviewer should weigh:
 * Grid carbon and water are already in the score. Purely on the model's terms, Wyoming overtakes King
   only if Energy & Carbon weight rises from 22 % to ≥ 29 %.
-* Relocating within King County to Urban Growth Area or industrial-zoned land (132 near-best cells) was not
+* Relocating within King County to Urban Growth Area or industrial-zoned land (115 near-best cells) was not
   tested.
 * The Town of Sheldon's zoning treatment of data centers is unverified (law under revision).
 * NY's legislature passed a stricter ≥ 20 MW bill that, if signed, could add lasting conditions.

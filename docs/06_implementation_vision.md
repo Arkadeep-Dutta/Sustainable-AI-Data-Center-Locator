@@ -4,7 +4,7 @@ Guiding idea: build the campus as **grid infrastructure, a heat utility, and a c
 a load. Every phase is gated on measured performance, in the same spirit as the decision engine.
 
 ## Phase 0 — Licence to build (2026 – mid-2027, during the EO 62 state-permit pause)
-* Parcel due diligence across the 170 near-best res-7 cells. Prefer disturbed or lower-productivity land.
+* Parcel due diligence across the 168 near-best res-7 cells. Prefer disturbed or lower-productivity land.
   Use agricultural-district and zoning screens, wetland delineation, cultural-resource surveys.
 * Early government-to-government consultation with the Seneca and Tonawanda Seneca Nations. Public
   hearings, matching the host-community hearing requirement in the pending S10642/A11560 bill even if
