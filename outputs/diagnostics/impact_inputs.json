@@ -1,0 +1,42 @@
+{
+ "baseline": {
+  "name": "CONUS average",
+  "co2_kg_mwh": 349.66710055508,
+  "clean_share": 0.397,
+  "grid_water_l_mwh": 1265.04676409496,
+  "grid_water_l_mwh_hydro": 2234.062970445768,
+  "cdd65": 933.9950940488509,
+  "hdd65": 5324.579684269954,
+  "bws": 0.2834466726767678,
+  "pop_50km": 110414.49999999996,
+  "bws_ref": 0.2834466726767678
+ },
+ "loudoun": {
+  "name": "Loudoun County, VA",
+  "h3": "862aaa8e7ffffff",
+  "egrid": "SRVC",
+  "co2_kg_mwh": 270.48892363262,
+  "clean_share": 0.498,
+  "grid_water_l_mwh": 1635.1086200988002,
+  "grid_water_l_mwh_hydro": 1873.1126006060163,
+  "cdd65": 1070.0632181069589,
+  "hdd65": 4917.41310797287,
+  "bws": 0.055798858778338,
+  "pop_50km": 3384292.0,
+  "bws_ref": 0.2834466726767678
+ },
+ "winner": {
+  "name": "King County WA (R1)",
+  "h3": "8728d4329ffffff",
+  "egrid": "NWPP",
+  "co2_kg_mwh": 288.15226411279,
+  "clean_share": 0.5820000000000001,
+  "grid_water_l_mwh": 726.602221115232,
+  "grid_water_l_mwh_hydro": 7305.712253707559,
+  "cdd65": 140.07184531989793,
+  "hdd65": 5440.123977502148,
+  "bws": 0.051699473225846,
+  "pop_50km": 2336954.0000000005,
+  "bws_ref": 0.2834466726767678
+ }
+}

@@ -67,7 +67,7 @@ def interactive(s: pd.DataFrame, finalists: pd.DataFrame | None, fname: str = "n
     el = s[s["eligible"]].nlargest(top_n, "S_G")
     g = grid.to_gdf(el.reset_index()[["h3", "lat", "lon", "S_G", "rank_G"] + [f"P_{p}" for p in PILLARS]])
     g = g.round(3)
-    m = folium.Map(location=[39, -97], zoom_start=4, tiles="cartodbpositron")
+    m = folium.Map(location=[39, -97], zoom_start=4, tiles="OpenStreetMap")
     cmap = cm.linear.viridis.scale(float(g["S_G"].min()), float(g["S_G"].max()))
     cmap.caption = f"S_G (top {top_n} eligible cells)"
     folium.GeoJson(g.to_json(), name="score",
