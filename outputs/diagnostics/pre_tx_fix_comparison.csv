@@ -1,0 +1,9 @@
+label,h3_old,S_G_old,rank_G_old,rank_A_old,rank_pctnorm_old,P_GI_old,p_rank1_k100_old,median_rank_k100_old,h3_new,S_G_new,rank_G_new,rank_A_new,rank_pctnorm_new,P_GI_new,p_rank1_k100_new,median_rank_k100_new,same_site
+R1,8728d4329ffffff,0.8614,1,1,1,1.0,0.8604,1.0,8728d4329ffffff,0.8613,1,1,1,1.0,0.8634,1.0,True
+R2,872aa6c44ffffff,0.8466,2,2,4,0.9551,0.0874,3.0,872aa6c44ffffff,0.8464,2,2,4,0.9553,0.087,3.0,True
+R3,872b884b0ffffff,0.8454,3,3,2,0.9576,0.0522,3.0,872b884b0ffffff,0.845,3,3,2,0.9577,0.0496,3.0,True
+R5,8728f0bb1ffffff,0.8395,4,4,3,0.9784,0.0,4.0,8728f0bb1ffffff,0.8394,4,4,3,0.9786,0.0,4.0,True
+R7,872696868ffffff,0.8195,5,5,5,0.9761,0.0,5.0,872696868ffffff,0.8193,5,5,5,0.9763,0.0,5.0,True
+R9,87288ad0dffffff,0.8076,6,6,7,0.965,0.0,6.0,87288ad0dffffff,0.8071,6,6,7,0.9652,0.0,6.0,True
+R11,8726b30d0ffffff,0.8063,7,7,6,0.9447,0.0,7.0,8726b30d0ffffff,0.8059,7,7,6,0.9449,0.0,7.0,True
+R19,87262c944ffffff,0.7939,8,8,8,0.9672,0.0,8.0,87262c944ffffff,0.7938,8,8,8,0.9674,0.0,8.0,True

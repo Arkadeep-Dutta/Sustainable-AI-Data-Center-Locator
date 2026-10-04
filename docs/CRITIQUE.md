@@ -102,6 +102,19 @@ architecture/engineering) to measure data-center-relevant technical labour. Effe
 * finalist CE scores change by ≤ 0.011 (largest: Whitman WA, a university town);
 * R1's P(rank 1) moved from 0.874 to 0.860 and R2's from 0.082 to 0.087.
 
+**Post-lock audit (transmission).** 10 HVDC lines (e.g. Pacific DC Intertie, CU line, Quebec–New England,
+CHPE) had been counted as "≥ 230 kV access". They are now excluded, because a load cannot tap a
+point-to-point HVDC line without a converter station. Five 220 kV AC lines (220–287 kV class) are now
+included. Nationally, 480 cells along HVDC corridors newly fail G4 (14.2 → 14.5 % of CONUS) and the
+largest single-cell score change is −0.47. The finalists, their ranks, and the national top-25 regions are
+unchanged (`outputs/diagnostics/pre_tx_fix_comparison.csv`). The VOLT_CLASS fallback never triggers
+(no invalid VOLTAGE values).
+
+**Post-lock audit (scoring and impact).** Within-pillar renormalisation, the 50 % observed-weight rule,
+and geometric aggregation were reviewed: no defect. Impact unit chains were verified; the heat-pump
+credit is conservative (docs/04). The res-7 land rescale was factored out and unit-tested. A latent empty
+`rank_A` column in res-7 scores was fixed (not used by any reported result).
+
 ## What more time or data would improve
 1. Nodal/hourly marginal emissions (Cambium, WattTime) and interconnection-queue headroom per substation.
 2. Parcel and zoning data (Regrid or county assessors) and prime-farmland/ag-district layers.

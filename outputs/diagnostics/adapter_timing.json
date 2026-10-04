@@ -20,7 +20,7 @@
   "cells": 209488
  },
  "transmission_res6": {
-  "seconds": 34.3,
+  "seconds": 28.7,
   "cells": 209488
  },
  "land_res6": {
@@ -48,7 +48,7 @@
   "cells": 12049
  },
  "transmission_res7_refine": {
-  "seconds": 3.9,
+  "seconds": 5.1,
   "cells": 12049
  }
 }

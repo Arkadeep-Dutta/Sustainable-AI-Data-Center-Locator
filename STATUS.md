@@ -29,3 +29,9 @@
 - Deliverables: docs/01-06, slides_outline, CRITIQUE, README; outputs/rankings.csv (167,460 rows),
   candidates.geojson (33 features), maps (20 + 3 figs), Streamlit (health ok, AppTest pass).
 - Tests: 18 pass (core, adapters, smoke, app). No licence added (awaiting team choice).
+
+## 2026-10-04 — Targeted audit (post-lock)
+- C24010 verified vs 2023 table shell; skilled share now 008+009 (not 007 subtotal). Finalists unchanged.
+- Transmission: HVDC excluded, 220 kV class included; G4 14.2→14.5 %; eligible 166,980. Finalists unchanged.
+- refine.score_local: rescale factored + tested; rank_A fixed. scoring/impact reviewed: no defect.
+- Snapshots + comparisons: outputs/diagnostics/pre_*_fix/, *_comparison.csv. Tests: 19 pass.

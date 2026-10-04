@@ -60,7 +60,7 @@ demo does exactly this), while the full spatial feature build takes ≈ 8.5 min.
 |---|---|---|---|---|
 | G1 land | < 2 km² NLCD-suitable, unprotected land in cell | 300 MW–1 GW campus needs ≈ 0.5–2 km² | NLCD 2023 + PAD-US 4.1 | 7.1 / 7.1 |
 | G2 protected / water | > 80 % of cell protected (GAP 1–2), open water or wetland | no feasible footprint | NLCD + PAD-US | 5.5 / 8.2 |
-| G4 transmission | > 50 km to in-service ≥ 230 kV line | new HV line cost / multi-year permitting | HIFLD | 14.2 / 19.8 |
+| G4 transmission | > 50 km to in-service AC line in the 220–287 kV class or above (HVDC excluded) | new HV line cost / multi-year permitting | HIFLD | 14.5 / 20.1 |
 | G5 water (scenario) | Aqueduct baseline water stress > 0.8 | only binding for water-cooled designs; base case is dry/DLC | Aqueduct 4.0 | inactive (would remove 28.1 %) |
 
 Local (res 7): G1 ≥ 0.5 km² of suitable land with slope ≤ 10 % outside PAD-US; G3 FEMA SFHA share ≤ 50 %;
@@ -127,7 +127,7 @@ The geometric mean is only partially compensatory: a site cannot buy back a disa
 excellence elsewhere.
 
 ## 8. Candidate extraction
-Top 5 % of eligible cells by S_G (8,373 cells) → greedy non-maximum suppression with 150 km radius →
+Top 5 % of eligible cells by S_G (8,349 cells) → greedy non-maximum suppression with 150 km radius →
 25 distinct regions (`outputs/diagnostics/shortlist_res6.csv`). Gate 3 approved 8 regions for refinement,
 chosen for score and geographic / grid-region diversity (WA, NY×2, OR, UT, WA-east, WY, MN).
 

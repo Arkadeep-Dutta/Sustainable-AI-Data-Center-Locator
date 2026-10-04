@@ -20,7 +20,7 @@ Calculations: `siteselect/impact.py` → `outputs/diagnostics/impact.csv`, input
 | Grid emission factor | eGRID2023 subregion CO₂e output rate (location-based **average**) |
 | Grid water | eGRID generation mix × Macknick et al. (2012) median consumption factors; hydro reservoir evaporation excluded (sensitivity: included) |
 | Scarcity weighting | AWARE-*inspired* factor CF = local Aqueduct water stress ÷ CONUS median (0.283), clipped to [0.1, 10]. **Not a formal AWARE implementation** |
-| Heat recovery | 60–80 % of IT heat recoverable at 45–60 °C; 10–30 % of it put to use; displaces natural-gas boilers (0.20 t CO₂/MWh_th) net of heat-pump uplift electricity (COP 3) |
+| Heat recovery | 60–80 % of IT heat recoverable at 45–60 °C; 10–30 % of it put to use; displaces natural-gas boilers (0.20 t CO₂/MWh_th) net of heat-pump uplift electricity (COP 3). Conservative: compressor heat added to the delivered output (+50 % at COP 3) is not credited |
 
 ## Results — 300 MW IT, per year
 

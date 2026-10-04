@@ -11,7 +11,7 @@ and weight are in `config/features.yaml`.
 | eGRID2023 (rev2) + subregion GDB | US EPA, data 2023 (rel. 2025) | 27 subregions (approx. polygons) | US | Public domain | CO₂e rate, clean share, generation mix | point-in-polygon on cell centroid; lb→kg |
 | Aqueduct 4.0 | WRI, 2023 | HydroBASINS L6 catchments | Global | CC BY 4.0 | baseline + 2050 BAU water stress | point-in-polygon; 9999 sentinel → 10; arid/low-use → ≥ 0.8 |
 | U.S. Climate Normals 1991–2020 | NOAA NCEI | 7,304 stations with annual HDD & CDD | US | Public domain | CDD65 → PUE/WUE; HDD65 | IDW (k = 8, p = 2) in EPSG:5070 |
-| HIFLD Electric Power Transmission Lines | DHS HIFLD (ArcGIS Online) | vector, 52,244 lines | US | Public | distance to ≥ 230 / ≥ 345 kV; line density | VOLTAGE (VOLT_CLASS fallback); planned/inactive dropped; STRtree nearest |
+| HIFLD Electric Power Transmission Lines | DHS HIFLD (ArcGIS Online) | vector, 52,244 lines | US | Public | distance to ≥ 230 / ≥ 345 kV; line density | VOLTAGE (VOLT_CLASS fallback); planned/inactive and HVDC dropped; 220–287 kV class counted as "230"; STRtree nearest |
 | FEMA National Risk Index | FEMA, tract table (v1.19+) | 85,154 census tracts | US | Public domain | annualised frequency: flood, wildfire, hurricane, heat wave, drought, tornado | GEOID join to tract centroid; nearest tract (≤ 60 km) |
 | ACS 5-year 2019–2023 (B01001, B23025, B19013, C24010) | US Census Bureau | census tract | US | Public domain | workforce, skilled share, unemployment, income, population | tract centroids → 1–2 km raster → FFT radius sums |
 | 2023 Gazetteer — tracts | US Census Bureau | tract centroids | US | Public domain | geocoding ACS / NRI | — |
@@ -50,7 +50,7 @@ discriminating range of the carbon, water, or transmission features. Land satura
 "enough" land), which is intended: land is a sufficiency criterion.
 
 ## 4. Insights
-1. **Transmission access is the binding national constraint.** 14 % of CONUS is > 50 km from a ≥ 230 kV
+1. **Transmission access is the binding national constraint.** 14.5 % of CONUS is > 50 km from a ≥ 220–230 kV AC
    line, more than all land and protection gates combined (`exclusions.png`).
 2. **Grid region is the largest single driver.** eGRID subregion explains 26 % of national S_G variance
    (`plateau_res6.txt`). Upstate NY and the Pacific Northwest dominate the top 5 % because their grids are
@@ -58,7 +58,7 @@ discriminating range of the carbon, water, or transmission features. Land satura
 3. **Water stress splits the West.** 28 % of CONUS area exceeds Aqueduct "extremely high" stress (> 0.8).
    Quincy, WA, an existing hub, is held to the 74th percentile mainly by its catchment's stress.
 4. **Sanity check of existing markets** (`sanity_markets_res6.csv`): The Dalles 97th percentile, Loudoun
-   94th, central Iowa 86th, Quincy 74th, Cheyenne 50th, Abilene 45th, Phoenix 15th. Infrastructure
+   94th, central Iowa 86th, Quincy 74th, Cheyenne 50th, Abilene 45th, Phoenix 16th. Infrastructure
    distances are plausible: Loudoun 5.5 km, Quincy 1.4 km, Altoona 0.4 km to ≥ 230 kV.
 5. **Bugs caught by these checks.** An ArcGIS paging truncation had dropped 38 % of transmission lines
    (Quincy appeared 1,219 km from a line). Treating "status unknown" lines as absent was a second error. Both
