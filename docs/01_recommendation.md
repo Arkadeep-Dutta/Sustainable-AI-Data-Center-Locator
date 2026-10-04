@@ -1,8 +1,8 @@
 # 01 — Recommended Location
 
 ## Recommendation
-**Northwestern Wyoming County, New York (Western New York), about 5 km from Strykersville and 35 km
-southeast of Buffalo.**
+**Town of Sheldon, northwestern Wyoming County, New York (Western New York), about 5 km from
+Strykersville and 35 km southeast of Buffalo.**
 
 | | |
 |---|---|
@@ -30,28 +30,41 @@ That leaves room to choose among parcels during land acquisition.
 ## How the recommendation was reached (transparency)
 1. A national screen of 209,488 H3 cells → 25 diverse candidate regions → 8 refined at res 7
    (30 m land, 3DEP slope, FEMA floodplain).
-2. By the pre-registered robustness rule (highest P(rank = 1)), the **model's winner is King County, WA**
-   (site 47.254, −121.952; S_G 0.861; P(rank 1) = 0.86).
-3. **At Gate 4 the team chose Wyoming County, NY instead.** On a 20–30-year view, the deciding factor was
-   operating carbon: NYUP's grid emits 110 vs 288 kg CO₂e/MWh for King County's NWPP subregion (−62 %).
-   For a 300 MW facility that is ≈ 0.40 Mt CO₂ per year less on a location basis. Combined with the lowest
-   baseline water stress of all finalists, a near-best and stable rank, and the second-highest heat-reuse
-   score, this outweighed King County's grid-proximity and workforce advantage. King County's location-based
-   carbon is also higher than Loudoun's, which undercuts a sustainability-led pitch.
-4. Our accepted cost: New York's one-year moratorium on new data centers > 20 MW (enacted July 2026)
-   delays permitting to roughly mid-2027. Over a 20–30-year asset life that is a schedule risk, not a
-   location flaw. See docs/05.
+2. **Design of the method:** the quantitative engine produces a robust shortlist. The final choice among
+   the top finalists is made by manual review, to cover what public datasets cannot capture (zoning,
+   regulation, interconnection, community context) and the model's own variance.
+3. By the pre-registered robustness rule (highest P(rank = 1)), the **model's top finalist is King County,
+   WA** (site 47.254, −121.952; S_G 0.861; P(rank 1) = 0.86). Wyoming County is a close #2 (S_G 0.847;
+   P(top 5) = 0.999; median rank 3).
+4. **At Gate 4 the team selected Wyoming County, NY** on the political and regulatory landscape and current
+   events. Qualitative evidence (sources in docs/05):
+   * **King County site:** the model's cell is zoned **RA-10 Rural Area**, outside the Urban Growth Area,
+     next to single-family parcels. Washington's Growth Management Act does not permit major industrial
+     development in rural areas except through the RCW 36.70A.365 master-planned process. The local
+     county councilmember has publicly opposed data centers on rural-zoned land. Adjacent Pierce County
+     enacted an emergency ban on new data centers > 10 MW in unincorporated areas (Aug 2026). Puget Sound
+     Energy reports large-load requests ≈ 50 % of its peak.
+   * **Wyoming County site:** New York's pause is temporary. Executive Order 62 (14 Jul 2026) halts
+     *state discretionary* permits for data centers ≥ 50 MW for up to one year, or until the statewide
+     environmental review and standards are complete. It does not cover local approvals. No town or county
+     action against data centers was found for Sheldon or Wyoming County.
+   * **Sustainability context (already scored by the model, not an additional factor):** NYUP grid
+     110 vs 288 kg CO₂e/MWh for King County's NWPP subregion (−62 %, ≈ 0.40 Mt CO₂/yr at 300 MW), and the
+     lowest water stress of all finalists.
+5. Accepted cost: the EO 62 pause delays state permits to roughly mid-2027, and the legislature's stricter
+   ≥ 20 MW bill (passed June 2026, unsigned as of late August) may add conditions. Over a 20–30-year asset
+   life that is a schedule and compliance risk, not a location flaw. See docs/05.
 
-This override of the rule-based winner is a deliberate, documented judgement. The engine still reports
-King County as #1 under the pre-registered rule.
+The engine's quantitative ranking is reported unchanged. The recommendation reflects the team's
+pre-planned manual decision step applied to the model's top finalists.
 
 ## Runner-ups
 
 | # | Site | S_G | P(rank 1) | Median rank | Note |
 |---|---|---|---|---|---|
-| Model #1 | King Co, WA (47.254, −121.952) | 0.861 | 0.86 | 1 | Best grid access. Higher-carbon grid; zoning (Enumclaw Plateau APD) and PSE large-load backlog |
+| Model #1 | King Co, WA (47.254, −121.952) | 0.861 | 0.86 | 1 | Best grid access. Higher-carbon grid; site zoned RA-10 rural (GMA limits on major industry); PSE large-load backlog; Pierce Co ban adjacent |
 | 2 | **Wyoming Co, NY (recommended)** | 0.847 | 0.09 | 3 | P(top 5) = 0.999 |
-| 3 | Lewis Co, NY (43.766, −75.472) | 0.845 | 0.05 | 3 | Same grid. Smaller labour shed. Same moratorium |
+| 3 | Lewis Co, NY (43.766, −75.472) | 0.845 | 0.05 | 3 | Same grid. Smaller labour shed. Same EO 62 pause |
 | 4 | Yamhill Co, OR (45.340, −122.999) | 0.839 | 0.00 | 4 | POWER Act large-load rate class; farmland zoning |
 | 5 | Morgan Co, UT (41.034, −111.724) | 0.819 | 0.00 | 5 | Steep terrain limits parcels |
 
@@ -62,5 +75,6 @@ King County as #1 under the pre-registered rule.
 * **Coarse inputs:** grid carbon and grid water come from the eGRID subregion (NYUP), so every NYUP
   site shares them. Local features (land, flood, slope, transmission) decide within the region.
 * **Not in any dataset:** parcel ownership, zoning, NYISO interconnection timing, and community
-  sentiment. The STAMP data-center controversy in neighbouring Genesee County shows real local risk
+  sentiment. The Town of Sheldon is revising its zoning law (draft dated 22 Jul 2026), and its treatment
+  of data centers is not yet known. The STAMP data-center controversy in neighbouring Genesee County shows real local risk
   (docs/05).

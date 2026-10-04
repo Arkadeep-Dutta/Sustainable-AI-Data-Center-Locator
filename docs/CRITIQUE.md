@@ -3,13 +3,24 @@
 A candid review of the engine and the recommendation. Issues are ordered roughly by how much they could
 change the answer.
 
-### 1. The final pick overrides the pre-registered rule
-The robustness rule (max P(rank = 1)) selects **King County, WA** (P = 0.86). The team chose **Wyoming
-County, NY** (P(rank 1) = 0.09, median rank 3, P(top 5) = 0.999) on a 20–30-year carbon argument. This is
-a value judgement layered on the model: the model treats carbon as 22 % of the decision, while the team
-effectively weighted it higher. The override is documented in docs/01 and SPEC §16c, and both sites remain
-in the outputs. A reviewer who weights grid access and near-term deliverability more should prefer King
-County.
+### 1. The final pick is a manual decision among the top finalists
+The robustness rule (max P(rank = 1)) ranks **King County, WA** first (P = 0.86). By design, the team used
+the engine to produce a shortlist and then decided manually among the top finalists. It chose **Wyoming
+County, NY** (P(rank 1) = 0.09, median rank 3, P(top 5) = 0.999) on the political/regulatory landscape and
+current events (docs/01, docs/05):
+* the King County model site is RA-10 rural land under Growth Management Act limits;
+* adjacent Pierce County enacted a > 10 MW ban;
+* NY's EO 62 pause is time-limited.
+
+Caveats a reviewer should weigh:
+* Grid carbon and water are already in the score. Purely on the model's terms, Wyoming overtakes King
+  only if Energy & Carbon weight rises from 22 % to ≥ 29 %.
+* Relocating within King County to Urban Growth Area or industrial-zoned land (132 near-best cells) was not
+  tested.
+* The Town of Sheldon's zoning treatment of data centers is unverified (law under revision).
+* NY's legislature passed a stricter ≥ 20 MW bill that, if signed, could add lasting conditions.
+
+Both sites remain in all outputs.
 
 ### 2. Weight subjectivity and robustness
 Pillar weights (EC 22, GI 22, CR 16, WA 15, CE 11, LM 8, HR 6) were set by the team at Gate 2, revised
@@ -65,7 +76,7 @@ variables* are (next item). Whitman Co (R9) lacks digitised FEMA floodplains. NF
 ambiguous between "no flood risk" and "not mapped".
 
 ### 11. Omitted variables
-Not scored: parcel availability and price, zoning (King County's Enumclaw Plateau APD; NY agricultural
+Not scored: parcel availability and price, zoning (King County's RA-10 rural zoning and GMA urban-growth limits; NY agricultural
 districts), substation capacity and interconnection queue position, electricity price, fiber/IX proximity,
 winter-storm/ice hazard, CMIP6 future climate, seismic, low-carbon steel/cement supply, existing data-center
 saturation, tax incentives, and community sentiment. Several of these (moratoria, opposition, utility
@@ -79,7 +90,8 @@ prime-farmland status. In agricultural regions (Wyoming Co, Enumclaw Plateau, Ya
 overstates buildable supply.
 
 ### 13. Interconnection politics and community sentiment
-2026 brought moratoria (New York State, Seattle), ratepayer-protection laws (Oregon POWER Act, Minnesota,
+2026 brought moratoria (New York State EO 62 for ≥ 50 MW state permits; Seattle city limits; Pierce
+County WA > 10 MW), ratepayer-protection laws (Oregon POWER Act, Minnesota,
 Utah SB 132), and utility pauses after pushback (Avista). No open dataset captures this, and it changes
 faster than any data vintage. The qualitative layer is a snapshot as of October 2026.
 

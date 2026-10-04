@@ -252,10 +252,19 @@ S_G variance explained by eGRID subregion (ANOVA R²) — report; discuss in CRI
 - Gate 3: regions 1, 2, 3, 5, 7, 9, 11, 19 refined at res 7 (added 3DEP slope ≤ 10 %, FEMA NFHL SFHA).
 - Model robustness winner (rule §12): R1 King Co WA, P(rank1)=0.860 (κ=100; 0.874 before C24010 fix).
 - **Gate 4 TEAM DECISION: recommend R2 — Wyoming County NY, H3 872aa6c44ffffff (42.772, −78.446),
-  ≈5 km from Strykersville.** Rationale: 20–30 yr carbon-led view — NYUP grid 110 vs 288 kg CO2e/MWh
-  (−62 %), lowest water scarcity, robust top-3 (P(top5)=0.999, median rank 3); accepts the NY one-year
-  >20 MW moratorium (Jul 2026) as a near-term delay. This override of the rule-based winner must be stated
-  explicitly in every deliverable. Claims = scenario.yaml base case (300 MW IT), docs/04.
+  Town of Sheldon, ≈5 km from Strykersville.** Method: the MCDA shortlists, and the team decides
+  manually among the top finalists. Rationale (reaffirmed after the final audit): political/regulatory
+  landscape and current events.
+  * King site is RA-10 rural, outside the UGA (GMA limits); Pierce Co (adjacent) > 10 MW ban, Aug 2026;
+    councilmember opposes rural-zoned data centers.
+  * NY EO 62 (14 Jul 2026) is a time-limited pause on state discretionary permits ≥ 50 MW; the ≥ 20 MW
+    bill passed but is unsigned.
+  * Context already scored: NYUP 110 vs NWPP 288 kg CO2e/MWh, robust top-3 (P(top5)=0.999).
+
+  The model ranking (R1 first) must be reported unchanged in every deliverable. Claims = scenario.yaml base
+  case (300 MW IT), docs/04.
+- Discrepancy fixes (post-audit): earlier docs said "NY > 20 MW moratorium enacted" (correct: EO 62,
+  ≥ 50 MW) and "King site in Enumclaw Plateau APD" (correct: RA-10 rural, not APD/FPD).
 
 ## 17. Discrepancy log
 - 2026-10-04: original long instruction document not located; spec built from the

@@ -3,11 +3,12 @@
 Guiding idea: build the campus as **grid infrastructure, a heat utility, and a community asset**, not only
 a load. Every phase is gated on measured performance, in the same spirit as the decision engine.
 
-## Phase 0 — Licence to build (2026 – mid-2027, during the NY moratorium)
+## Phase 0 — Licence to build (2026 – mid-2027, during the EO 62 state-permit pause)
 * Parcel due diligence across the 170 near-best res-7 cells. Prefer disturbed or lower-productivity land.
   Use agricultural-district and zoning screens, wetland delineation, cultural-resource surveys.
 * Early government-to-government consultation with the Seneca and Tonawanda Seneca Nations. Public
-  hearings ahead of the new statutory requirement.
+  hearings, matching the host-community hearing requirement in the pending S10642/A11560 bill even if
+  it is not enacted. Engage the Town of Sheldon on its zoning-law revision (draft 22 Jul 2026).
 * NYISO large-load interconnection request, phased 100 → 300 MW (option to 600 MW).
 * Community Benefits Agreement: local-hire targets, workforce fund with Buffalo/Rochester trades and Genesee
   Community College / Alfred State, and a heat-reuse revenue share. No outsized tax abatement.

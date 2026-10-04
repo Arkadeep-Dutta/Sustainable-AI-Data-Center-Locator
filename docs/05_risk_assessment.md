@@ -8,7 +8,7 @@ Scale: Likelihood (L) and Impact (I) are scored 1–5; score = L × I. **Evidenc
 
 | # | Risk | Category | Horizon | L | I | Score | Evidence | Mitigation |
 |---|---|---|---|---|---|---|---|---|
-| 1 | NY one-year moratorium on new data centers > 20 MW (signed Jul 2026), plus statewide DEC environmental review (18 months) with possible new conditions | Regulatory | N | 5 | 3 | **15** | Q | Use the pause for site control, NYISO studies, and community agreements. Design to exceed likely conditions (dry cooling, 24/7 CFE, heat reuse, public hearing). Phase 1 energisation ≥ 2028 |
+| 1 | NY Executive Order 62 (14 Jul 2026): pause on state discretionary permits for data centers ≥ 50 MW, for up to one year or until a statewide GEIS and standards (energy, water, air, noise, disadvantaged communities) are complete. Local approvals not covered. The legislature's ≥ 20 MW bill (90 % renewable by 2040, full cost recovery) passed in June 2026 and was unsigned as of late August; it could add conditions | Regulatory | N | 5 | 3 | **15** | Q | Use the pause for site control, NYISO studies, and community agreements. Design to exceed likely conditions (dry cooling, 24/7 CFE, heat reuse, public hearing). Phase 1 energisation ≥ 2028 |
 | 2 | Interconnection delay or cost: a large new load in NYISO Zone A/B needs transmission upgrades; other large loads (STAMP, ≈ 500 MW proposed) compete for the same capacity | Grid / interconnection | N | 4 | 4 | **16** | M (0.9 km to ≥ 230 kV) + Q | Early NYISO large-load study. Phased load ramp (100 → 300 MW). Fund network upgrades. Co-locate storage for flexibility. Use demand response as a grid asset |
 | 3 | Community opposition (cf. STAMP in neighbouring Genesee Co: subsidy backlash, Tonawanda Seneca Nation lawsuit over environmental review) | Community | N | 4 | 4 | **16** | Q | Consult the Seneca and Tonawanda Seneca Nations before site control. Community benefits agreement, no tax-abatement-heavy deal, local hiring, heat-reuse dividends, transparent water/energy reporting |
 | 4 | Marginal emissions higher than the NYUP average (new load met by gas peakers or imports) | Environmental / carbon | N–F | 4 | 3 | 12 | M (avg 110 kg/MWh) | Hourly-matched 24/7 CFE procurement (NY offshore wind, upstate wind/solar, nuclear PPAs). Additionality requirement. Report location-, market-, and consequential-based emissions |
@@ -23,7 +23,7 @@ Scale: Likelihood (L) and Impact (I) are scored 1–5; score = L × I. **Evidenc
 | 13 | Fiber/latency (not scored) | Infrastructure | N | 2 | 2 | 4 | Q | Buffalo is a fiber hub (~35 km). Diverse-path laterals. Training-heavy AI workloads tolerate latency |
 | 14 | Model risk: coarse eGRID/Aqueduct inputs, missing zoning/queue data, team override of the rule-based winner | Analytical | N | 3 | 3 | 9 | M | Robustness suite (rank 1–4 under 5,000 weight draws). Parcel-level due diligence before commitment. Rule-based winner (King Co WA) kept as fallback |
 
-**Top risks (score ≥ 15):** interconnection (2), community (3), moratorium (1). All three are
+**Top risks (score ≥ 15):** interconnection (2), community (3), EO 62 state-permit pause (1). All three are
 non-physical, timeline risks. The site's physical risk profile (flood, wildfire, hurricane, water) is low.
 
 ## Present vs future
@@ -34,17 +34,31 @@ non-physical, timeline risks. The site's physical risk profile (flood, wildfire,
 
 ## Comparison to the model's #1 (King Co, WA)
 King County has better grid proximity, lower climate-hazard scores, and a larger workforce. Its
-qualitative risks are comparable in scale: PSE's large-load requests ≈ 50 % of its peak, Seattle's
-moratorium and activists targeting the county, and Enumclaw Plateau agricultural zoning. Its location-based
-carbon is 2.6× higher. Neither site is risk-free. The trade is a near-term regulatory delay (NY) against a
+qualitative risks:
+* the model's cell is zoned RA-10 Rural Area outside the Urban Growth Area, where the Growth Management
+  Act restricts major industrial development (RCW 36.70A.070(5), .365), so siting would require relocation
+  or a master-planned designation;
+* the local county councilmember publicly opposes data centers on rural-zoned land;
+* adjacent Pierce County enacted an emergency ban on new data centers > 10 MW in unincorporated areas
+  (Aug 2026);
+* PSE's large-load requests are ≈ 50 % of its peak.
+
+Seattle's one-year moratorium (June 2026) applies only within city limits, not to this unincorporated site.
+King County's location-based carbon is 2.6× higher. Neither site is risk-free. The trade is a time-limited
+state permitting pause (NY) against a structural land-use constraint at the model's site plus a
 persistent carbon and interconnection constraint (WA).
 
 ## Sources (qualitative)
-* NY moratorium: WAMC 2026-07-14 "Hochul order puts large data centers on hold in NY"; DataCenterDynamics
-  "New York becomes first US state to enact data center moratorium"; DLA Piper 2026-02-09.
+* NY pause: Executive Order 62 (2026-07-14), summarised by Jones Day "New York Enacts First Statewide Data
+  Center Moratorium" (Jul 2026) and Barclay Damon / Davis Polk client alerts; WAMC 2026-07-14. Legislature's
+  S10642/A11560: Greenberg Traurig (Jun 2026); Spectrum News 2026-08-27 (sponsor urging signature).
+* Town of Sheldon: townofsheldonny.gov (proposed new zoning law, draft 2026-07-22). NYISO large-load queue
+  and PSC proceeding 26-E-0045 (Feb 2026).
 * STAMP / Genesee Co: Investigative Post 2026-02-04 and 2026-03-18; DataCenterDynamics "Stream proposes large
   data center in Genesee County".
 * Washington: Washington State Standard / E&E News on SB 6231; PSE NWESS large-load presentation (Apr 2026);
-  Seattle moratorium coverage; WA Data Center Workgroup (dor.wa.gov).
+  Seattle moratorium coverage; WA Data Center Workgroup (dor.wa.gov). King County GIS zoning service
+  (site: RA-10, outside UGA, not in an APD/FPD); RCW 36.70A; Seattle Red 2026-09-02 (Councilmember
+  Dunn on rural zoning); Pierce County notice (Aug 2026, > 10 MW ban).
 * Oregon POWER Act (HB 3546) & PGE Schedule 96; Utah SB 132; Avista 500 MW pause (Jun 2026); Wyoming
   executive order (Jun 2026); Minnesota 2025 data-center law (HF16).
