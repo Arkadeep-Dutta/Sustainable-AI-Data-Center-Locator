@@ -250,10 +250,10 @@ S_G variance explained by eGRID subregion (ANOVA R²) — report; discuss in CRI
 
 ## 16c. GATE 3 / GATE 4 LOCK (2026-10-04)
 - Gate 3: regions 1, 2, 3, 5, 7, 9, 11, 19 refined at res 7 (added 3DEP slope ≤ 10 %, FEMA NFHL SFHA).
-- Model robustness winner (rule §12): R1 King Co WA, P(rank1)=0.874 (κ=100).
+- Model robustness winner (rule §12): R1 King Co WA, P(rank1)=0.860 (κ=100; 0.874 before C24010 fix).
 - **Gate 4 TEAM DECISION: recommend R2 — Wyoming County NY, H3 872aa6c44ffffff (42.772, −78.446),
   ≈5 km from Strykersville.** Rationale: 20–30 yr carbon-led view — NYUP grid 110 vs 288 kg CO2e/MWh
-  (−62 %), lowest water scarcity, robust top-3 (P(top5)=0.998, median rank 3); accepts the NY one-year
+  (−62 %), lowest water scarcity, robust top-3 (P(top5)=0.999, median rank 3); accepts the NY one-year
   >20 MW moratorium (Jul 2026) as a near-term delay. This override of the rule-based winner must be stated
   explicitly in every deliverable. Claims = scenario.yaml base case (300 MW IT), docs/04.
 

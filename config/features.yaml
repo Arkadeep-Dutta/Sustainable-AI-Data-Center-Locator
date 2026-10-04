@@ -81,8 +81,8 @@ features:
     weight: 0.35
   ce_skilled_share_80km:
     pillar: CE
-    unit: share of employed in construction/maintenance/production + computer/engineering occupations within 80 km
-    source: acs_c24010
+    unit: share of employed in construction/maintenance/production + computer/math + architecture/engineering occupations within 80 km
+    source: acs_c24010 (lines 008,009,032,033,035 + female 044,045,068,069,071; verified vs 2023 table shell)
     res_src: tract
     valuefn: {type: winsor, direction: 1, lo_pct: 2, hi_pct: 98, log: false}
     weight: 0.2

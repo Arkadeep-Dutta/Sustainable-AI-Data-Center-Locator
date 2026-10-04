@@ -56,9 +56,9 @@ discriminating range of the carbon, water, or transmission features. Land satura
    (`plateau_res6.txt`). Upstate NY and the Pacific Northwest dominate the top 5 % because their grids are
    clean (NYUP 110 kg/MWh) or water-light. Local features break ties inside each subregion.
 3. **Water stress splits the West.** 28 % of CONUS area exceeds Aqueduct "extremely high" stress (> 0.8).
-   Quincy, WA, an existing hub, scores in the 47th percentile mainly because of its catchment's stress.
-4. **Sanity check of existing markets** (`sanity_markets_res6.csv`): Loudoun 98th percentile, The Dalles
-   94th, central Iowa 87th, Quincy 47th, Abilene 45th, Cheyenne 31st, Phoenix 9th. Infrastructure
+   Quincy, WA, an existing hub, is held to the 74th percentile mainly by its catchment's stress.
+4. **Sanity check of existing markets** (`sanity_markets_res6.csv`): The Dalles 97th percentile, Loudoun
+   94th, central Iowa 86th, Quincy 74th, Cheyenne 50th, Abilene 45th, Phoenix 15th. Infrastructure
    distances are plausible: Loudoun 5.5 km, Quincy 1.4 km, Altoona 0.4 km to ≥ 230 kV.
 5. **Bugs caught by these checks.** An ArcGIS paging truncation had dropped 38 % of transmission lines
    (Quincy appeared 1,219 km from a line). Treating "status unknown" lines as absent was a second error. Both

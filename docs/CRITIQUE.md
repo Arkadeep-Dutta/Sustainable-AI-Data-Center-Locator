@@ -4,8 +4,8 @@ A candid review of the engine and the recommendation. Issues are ordered roughly
 change the answer.
 
 ### 1. The final pick overrides the pre-registered rule
-The robustness rule (max P(rank = 1)) selects **King County, WA** (P = 0.87). The team chose **Wyoming
-County, NY** (P(rank 1) = 0.08, median rank 3, P(top 5) = 0.998) on a 20–30-year carbon argument. This is
+The robustness rule (max P(rank = 1)) selects **King County, WA** (P = 0.86). The team chose **Wyoming
+County, NY** (P(rank 1) = 0.09, median rank 3, P(top 5) = 0.999) on a 20–30-year carbon argument. This is
 a value judgement layered on the model: the model treats carbon as 22 % of the decision, while the team
 effectively weighted it higher. The override is documented in docs/01 and SPEC §16c, and both sites remain
 in the outputs. A reviewer who weights grid access and near-term deliverability more should prefer King
@@ -92,6 +92,15 @@ Three data bugs (ArcGIS page truncation, status filtering, a transient service e
 would each have changed the ranking. All were caught by sanity checks against known markets. Hard
 failures on service errors and count verification are now built into the pager. Adapter-level tests
 exist only for core logic and a smoke test. More adapter unit tests would be prudent.
+
+**Post-lock audit (C24010).** I verified the ACS occupation line numbers against the official 2023 5-year
+table shell (`scripts/verify_c24010.py`). The original mapping used the 007 subtotal, which includes
+life/physical/social-science occupations. It was replaced with 008 + 009 (computer/math +
+architecture/engineering) to measure data-center-relevant technical labour. Effect
+(`outputs/diagnostics/c24010_fix_comparison.csv`):
+* finalist sites, geometric/arithmetic/weight-variant ranks, and the national top-25 regions are unchanged;
+* finalist CE scores change by ≤ 0.011 (largest: Whitman WA, a university town);
+* R1's P(rank 1) moved from 0.874 to 0.860 and R2's from 0.082 to 0.087.
 
 ## What more time or data would improve
 1. Nodal/hourly marginal emissions (Cambium, WattTime) and interconnection-queue headroom per substation.

@@ -2,8 +2,11 @@
 -> radius aggregates (FFT disc sums on an EPSG:5070 raster).
 
 Workforce: ages 18-64 (B01001 male 007-019, female 031-043).
-Skilled share: C24010 'computer, engineering & science' (007), 'construction & extraction' (032),
-'installation, maintenance & repair' (033), 'production' (035); female = male line + 36.
+Skilled share: C24010 'computer & mathematical' (008), 'architecture & engineering' (009),
+'construction & extraction' (032), 'installation, maintenance & repair' (033), 'production' (035);
+female = male line + 36 (044, 045, 068, 069, 071). Line numbers verified against the official
+ACS20235YR_Table_Shells.txt (scripts/verify_c24010.py). The 007 subtotal is NOT used because it
+includes 010 'life, physical & social science' occupations, which are not data-center workforce.
 Unemployment: B23025 005 / 003 (civilian labour force).
 Income: B19013 median HH income, population-weighted mean of tract medians (approximation).
 """
@@ -37,7 +40,7 @@ def tracts() -> pd.DataFrame:
     f = [f"B01001_E{i:03d}" for i in range(31, 44)]
     a = _read("b01001", ["B01001_E001"] + m + f)
     t = pd.DataFrame({"pop": a["B01001_E001"], "wa_pop": a[m + f].sum(1)})
-    occ = [7, 32, 33, 35]
+    occ = [8, 9, 32, 33, 35]
     c = _read("c24010", ["C24010_E001"] + [f"C24010_E{i:03d}" for i in occ + [o + 36 for o in occ]])
     t["employed"] = c["C24010_E001"]
     t["skilled"] = c.drop(columns="C24010_E001").sum(1)
