@@ -5,7 +5,7 @@ import pandas as pd
 import pytest
 
 from siteselect.adapters import _util, egrid
-from siteselect.config import PROCESSED
+from siteselect.config import PROCESSED, RAW
 
 F6 = PROCESSED / "features_res6.parquet"
 pytestmark = pytest.mark.skipif(not F6.exists(), reason="feature store not built")
@@ -27,6 +27,7 @@ def test_crs_metric_distance():
     assert 225 < d < 245
 
 
+@pytest.mark.skipif(not (RAW / "egrid2023_data_rev2.xlsx").exists(), reason="raw eGRID not downloaded")
 def test_egrid_units_and_known_values():
     t = egrid.subregion_table(include_hydro=False)
     # kg/MWh (not lb): CONUS subregions between ~80 and ~800

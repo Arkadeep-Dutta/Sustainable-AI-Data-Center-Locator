@@ -8,3 +8,5 @@ data/interim/
 .pytest_cache/
 outputs/diagnostics/*.log
 data/processed/*.parquet
+submission/
+submission.zip
