@@ -89,6 +89,15 @@ def test_candidate_diversity():
     assert len(c) <= 20 and candidates.min_separation_km(c) > 150
 
 
+def test_res7_land_rescale_endpoints():
+    from siteselect.refine import land_to_res6_scale
+    x = pd.Series([0.5, 2.0, 1.25])
+    y = land_to_res6_scale(x)
+    assert list(y.round(6)) == [2.0, 15.0, 8.5]
+    v = valuefn.linear(y, best=15, worst=2)
+    assert list(v.round(6)) == [0.0, 1.0, 0.5]
+
+
 def test_robustness_mc_and_pareto():
     ft = scoring.feature_table()
     rng = np.random.default_rng(1)

@@ -199,15 +199,21 @@ def run(regions=REGIONS) -> pd.DataFrame:
     return f
 
 
+def land_to_res6_scale(x, site=(0.5, 2.0), national=(2.0, 15.0)):
+    """Map res-7 site-scale land sufficiency (v=0 at 0.5 km2, v=1 at 2 km2) onto the res-6 breakpoints
+    (2 -> 15 km2) so the single registered linear value function applies at both resolutions."""
+    (a0, a1), (b0, b1) = site, national
+    return b0 + (x - a0) * (b1 - b0) / (a1 - a0)
+
+
 def score_local(mode: str = "physical") -> pd.DataFrame:
     """Local gates + MCDA with national reference population for relative value functions."""
     f7 = pd.read_parquet(PROCESSED / "features_res7_refine.parquet")
     f6 = pd.read_parquet(PROCESSED / "features_res6.parquet")
     g6 = gates.apply(f6, 6)
     g7 = gates.apply(f7, 7, level="local")
-    # res-7 land sufficiency value function: site scale (cell 5.2 km2): v=1 at >=2 km2, v=0 at <=0.5 km2
     f7s = f7.copy()
-    f7s["lm_suitable_km2"] = f7["lm_suitable_km2"] * (15 - 2) / (2 - 0.5) + (2 - 0.5 * (15 - 2) / (2 - 0.5))
+    f7s["lm_suitable_km2"] = land_to_res6_scale(f7["lm_suitable_km2"])
     comb = pd.concat([f6.assign(_n=True), f7s.assign(_n=False)])
     ref = pd.concat([g6["gate_pass"], pd.Series(False, index=f7.index)])
     s = scoring.score(comb, ref, mode=mode)
@@ -217,6 +223,7 @@ def score_local(mode: str = "physical") -> pd.DataFrame:
     s["eligible"] = s["pillars_complete"] & g7["gate_pass"] & \
         (s["confidence"] >= config.load("weights")["confidence_threshold"])
     s["rank_G"] = s["S_G"].where(s["eligible"]).rank(ascending=False, method="min")
+    s["rank_A"] = s["S_A"].where(s["eligible"]).rank(ascending=False, method="min")
     out = pd.concat([f7[["lat", "lon", "state", "region_id"]], g7.drop(columns="gate_pass"), s], axis=1)
     out.to_parquet(PROCESSED / f"scores_res7_refine{'' if mode == 'physical' else '_' + mode}.parquet")
     return out
