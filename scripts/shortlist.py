@@ -11,7 +11,6 @@ pts = gpd.GeoDataFrame(c, geometry=gpd.points_from_xy(c.lon, c.lat), crs=4326)
 j = gpd.sjoin(pts, co, how="left", predicate="within")
 j = j[~j.index.duplicated()]
 j["county"] = j["NAME"] + " Co, " + j["STUSPS"]
-j["rank_pct_mode"] = pct.loc[j["h3"], "S_G"].rank(ascending=False).values  # placeholder overwritten below
 pr = pct["S_G"].where(pct["eligible"]).rank(ascending=False, method="min")
 j["rank_pctnorm"] = pr.reindex(j["h3"]).values
 for k in ["ec_co2_rate", "wa_bws", "gi_dist_tx230_km", "egrid_subrgn"]:

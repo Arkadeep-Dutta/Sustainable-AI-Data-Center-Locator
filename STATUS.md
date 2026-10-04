@@ -19,3 +19,13 @@
 - Preliminary scoring for diagnostics only (rankings withheld until methodology lock).
 - Diagnostics: outputs/diagnostics/gate2_*.csv, sanity_markets_res6.csv, plateau_res6.txt (R²=0.29).
 - Tests: 9 core tests pass.
+
+## 2026-10-04 — Gates 2-4 approved → final package
+- Gate 2: weights EC22 GI22 CR16 WA15 CE11 LM8 HR6; WUE dropped (weight → PUE); hydro water excluded.
+- National: 167,460 / 209,488 cells eligible; 25 NMS regions; Gate 3 → 8 regions refined at res 7
+  (30 m NLCD, 3DEP slope, FEMA NFHL). Fixed transient NFHL failure (now raises; R9 genuinely unmapped).
+- Robustness (κ=100): R1 King Co WA P(rank1)=0.874 (rule winner); R2 Wyoming Co NY 0.082, median 3.
+- Gate 4 TEAM DECISION: recommend R2 Wyoming Co NY (42.772, −78.446) — override documented.
+- Deliverables: docs/01-06, slides_outline, CRITIQUE, README; outputs/rankings.csv (167,460 rows),
+  candidates.geojson (33 features), maps (20 + 3 figs), Streamlit (health ok, AppTest pass).
+- Tests: 18 pass (core, adapters, smoke, app). No licence added (awaiting team choice).
